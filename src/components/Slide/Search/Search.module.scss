@@ -1,0 +1,74 @@
+.search1 {
+    width: 100%;
+}
+.search2 {
+    width: 60%;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+.search {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    padding: 16px 14px 16px 14px;
+    background-color: white;
+    .search__header {
+        flex: 1;
+        display: flex;
+    }
+    input {
+        flex: 1;
+        font-style: normal;
+        font-size: 1.5rem;
+        padding-left: 20px;
+        height: 100%;
+        min-width: 0;
+        border: none;
+        outline-style: none;
+    }
+    input::placeholder {
+        font-style: italic; /* Chỉnh nghiêng cho placeholder */
+    }
+
+    div {
+        height: 100%;
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+    }
+    .btn-search {
+        color: white;
+        cursor: pointer;
+        background-color: var(--primary-color-light);
+        padding: 10px;
+        border-radius: 2px;
+    }
+}
+
+// search item
+
+.more-btn {
+    text-align: center;
+    border-top: 1px solid rgb(122, 119, 119);
+    padding: 8px 0;
+}
+
+@media (max-width: 767px) {
+    .search {
+        padding: 10px 14px 16px 14px;
+        flex-direction: column;
+        height: auto;
+        .search__header {
+            width: 100%;
+        }
+        input {
+            height: 56px;
+            padding-left: 10px;
+        }
+        .btn-search {
+            width: 100%;
+        }
+    }
+}

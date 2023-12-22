@@ -1,0 +1,34 @@
+.col {
+    padding: 6px;
+}
+.wrapper {
+    padding: 60px 0;
+    background-color: white;
+}
+.branchs {
+    background: #f4f4f4;
+    display: flex;
+    width: 86%;
+    margin: 0 auto;
+    border-radius: 60px;
+    padding: 28px 0;
+    overflow-y: auto;
+}
+.branch-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+// sub
+
+@media (max-width: 1024px) {
+    .branchs {
+        width: 94%;
+    }
+}
+
+@media (max-width: 500px) {
+    .branchs {
+        border-radius: 10px;
+    }
+}

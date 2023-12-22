@@ -1,0 +1,78 @@
+.wrapper {
+    background-color: white;
+    background-image: url('https://bizweb.dktcdn.net/100/496/216/themes/921741/assets/background_danhgia.jpg?1700191372383');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 60px 0;
+}
+.customer__comment {
+    width: 50%;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 1.8rem;
+    h2 {
+        font-size: 3rem;
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
+}
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .img {
+        max-width: 70px;
+        min-width: 70px;
+        height: 70px;
+        margin: 28px 0px 10px 0px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .text {
+        text-align: center;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-size: 2rem;
+        overflow: hidden;
+        font-weight: 500;
+    }
+    .name {
+        font-weight: 600;
+    }
+}
+@media (max-width: 1024px) {
+    .customer__comment {
+        width: 60%;
+        font-size: 1.6;
+        h2 {
+            font-size: 2.6rem;
+        }
+        .text {
+            text-align: center;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            font-size: 1.6rem;
+            overflow: hidden;
+            font-weight: 500;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .customer__comment {
+        width: 80%;
+    }
+}
+@media (max-width: 767px) {
+    .customer__comment {
+        width: 90%;
+    }
+}

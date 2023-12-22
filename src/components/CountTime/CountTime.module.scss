@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    background-color: var(--second-color);
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 1.6rem;
+    align-items: center;
+}
+.block {
+    padding: 0 10px;
+}
+.time {
+    margin-right: 4px;
+    font-weight: 700;
+}
+@media (max-width: 767px) {
+    .wrapper {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+}

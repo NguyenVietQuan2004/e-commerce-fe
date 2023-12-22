@@ -1,0 +1,39 @@
+.wrapper {
+    background: url(../../assets/img/slide3after.jpg);
+    background-size: cover;
+    background-position: center;
+    padding-top: 78px;
+    padding-bottom: 100px;
+    h2 {
+        margin: 0;
+        color: var(--second-color);
+        font-size: 4rem;
+    }
+}
+.inner {
+    color: var(--primary-color-light);
+    width: 46%;
+    font-size: 2rem;
+    margin: 140px 0 0 100px;
+    span {
+        display: block;
+        margin: 20px 0;
+    }
+}
+@media (max-width: 1024px) {
+    .inner {
+        margin: 60px auto;
+        width: 70%;
+        h2 {
+            font-size: 3rem;
+        }
+        span {
+            font-size: 1.6rem;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .inner {
+        width: 90%;
+    }
+}

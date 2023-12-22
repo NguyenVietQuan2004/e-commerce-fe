@@ -1,0 +1,430 @@
+.wrapper {
+    padding: 78px 130px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+.model {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: (rgba(0, 0, 0, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.popup {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    h3 {
+        border-bottom: 1px solid black;
+        margin: 10px 0;
+        padding-bottom: 10px;
+        color: rgb(0, 230, 0);
+    }
+    h3 + div {
+        font-weight: 600;
+    }
+    .wrap-btn {
+        margin: 16px;
+        align-self: flex-end;
+    }
+    button,
+    a {
+        padding: 10px 20px;
+        min-height: 42px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    a {
+        background-color: var(--second-color);
+        color: white;
+    }
+    button {
+        background-color: rgba(0, 0, 0, 0.05);
+        margin-right: 10px;
+    }
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+        margin: 10px 10px 10px 0;
+        color: #333;
+        font-size: 2rem;
+    }
+    .login {
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+    .userIcon {
+        margin-right: 4px;
+        path {
+            fill: black;
+        }
+    }
+}
+.left {
+    width: 68%;
+}
+.right {
+    width: 32%;
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+.info {
+    flex: 1;
+    padding: 0 16px;
+}
+.deliver {
+    flex: 1;
+    padding: 0 10px;
+}
+.form-group {
+    p {
+        color: #c23527;
+        margin-top: 4px;
+        margin-left: 6px;
+    }
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 15px 18px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        &:focus + .sub-title {
+            top: 0;
+            z-index: 2;
+            opacity: 1;
+            padding: 0 6px;
+            background-color: white;
+        }
+    }
+}
+.option-wrap {
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    cursor: pointer;
+    height: 100%;
+    .option-img {
+        width: 20px;
+        height: 16px;
+        margin-right: 6px;
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+}
+.list-country {
+    position: absolute;
+    background-color: white;
+    z-index: 2;
+    top: 104%;
+    width: 250px;
+    height: 200px;
+    right: -2px;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 1px grey;
+    overflow-y: auto;
+}
+.item-country {
+    font-size: 1.6rem;
+    padding: 8px 10px;
+}
+.list-province {
+    width: 100%;
+    z-index: 3;
+}
+.item-country.active {
+    background-color: #ddd;
+}
+.item-country:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.search-country {
+    input {
+        border: 2px solid grey;
+        padding: 10px;
+    }
+}
+.has-value.form-group {
+    .sub-title {
+        top: 0;
+        z-index: 2;
+        opacity: 1;
+        padding: 0 6px;
+    }
+}
+.has-error.form-group {
+    .row {
+        border-color: #c23527;
+    }
+}
+.sub-title {
+    position: absolute;
+    margin-left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 500;
+    opacity: 0.6;
+    background-color: white;
+    z-index: -1;
+    transition: all 0.1s linear;
+}
+
+.form-group {
+    margin-top: 14px;
+}
+.row1 {
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 15px 12px;
+    margin-top: 14px;
+    align-items: center;
+    border-radius: 6px;
+    input {
+        margin-right: 8px;
+    }
+}
+.row1.full-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+.pay-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+.head {
+    padding: 15px 12px;
+    display: flex;
+    align-items: center;
+    input {
+        margin-right: 8px;
+    }
+}
+.foot {
+    padding: 15px 12px;
+    background-color: #f8f8f8;
+}
+.list-pro {
+    padding: 28px 0px;
+    padding-right: 4px;
+    height: 300px;
+    overflow: auto;
+}
+.item {
+    display: flex;
+    align-items: center;
+}
+.item + .item {
+    margin-top: 20px;
+}
+.description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.price {
+    font-weight: 500;
+    color: #71716e;
+}
+.img-wrap {
+    position: relative;
+}
+.number {
+    font-size: 1rem;
+    background-color: black;
+    position: absolute;
+    color: white;
+    line-height: 18px;
+    text-align: center;
+    min-width: 18px;
+    min-height: 18px;
+    border-radius: 50%;
+    right: 4px;
+    top: -8px;
+}
+.img {
+    min-width: 50px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 10px;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.right {
+    background: linear-gradient(90deg, #fafafa 0%, #fff 70%);
+    h2 {
+        padding: 0 0 28px 28px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0;
+    }
+}
+.discount {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.discount-wrap {
+    display: flex;
+    justify-content: space-between;
+    button {
+        background-color: black;
+        padding: 11px 20px;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        font-size: 1.4rem;
+    }
+    input {
+        padding: 15px 10px;
+        flex: 1;
+        margin-right: 10px;
+        border-radius: 4px;
+        border: 1px solid #d5d5d5;
+        outline: none;
+        &:focus {
+            border: 1px solid black;
+            box-shadow: 0 0 0 1px black;
+        }
+    }
+    .disable {
+        background-color: rgba(0, 0, 0, 0.6);
+        cursor: auto;
+    }
+}
+.detail {
+    display: flex;
+    justify-content: space-between;
+    color: #71716e;
+    & + & {
+        margin-top: 20px;
+    }
+}
+.price-detail {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 26px 0;
+}
+.total {
+}
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    span {
+        color: #71716e;
+    }
+    div {
+        font-weight: 500;
+        font-size: 1.6rem;
+    }
+}
+.back {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    button {
+        background-color: black;
+        padding: 14px 22px;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+    }
+    a {
+        color: red;
+    }
+}
+@media (max-width: 1300px) {
+    .wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+        h3 {
+            font-size: 1.8rem;
+        }
+    }
+}
+@media (max-width: 1024px) {
+    .left {
+        width: 100%;
+    }
+    .right {
+        margin-top: 20px;
+        width: 100%;
+        background: #eeeeee;
+        padding: 20px;
+        padding-left: 0;
+    }
+}
+@media (max-width: 767px) {
+    .wrapper {
+        padding-left: 0px;
+        padding-right: 0px;
+        input,
+        button,
+        a {
+            font-size: 1.4rem;
+        }
+        h3 {
+            font-size: 1.6rem;
+        }
+    }
+    .info {
+        width: 100%;
+        flex: unset;
+    }
+    .header {
+        flex-direction: column-reverse;
+        margin-top: 10px;
+    }
+    .discount-wrap {
+        button {
+            padding: 5px 20px;
+        }
+        input {
+            margin-right: 0;
+        }
+    }
+    .right {
+        padding-right: 10px;
+        & > div {
+            padding-left: 10px !important;
+        }
+    }
+}
