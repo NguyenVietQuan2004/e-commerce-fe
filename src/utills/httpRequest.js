@@ -3,9 +3,11 @@ import jwt_decode from 'jwt-decode';
 import { setToken } from '~/redux/actions';
 
 const refreshAPI = async () => {
+    // `https://lofi-cosmetic.onrender.com/auth/refresh`,
+
     try {
         const res = await axios.post(
-            'https://lofi-cosmetic.onrender.com/auth/refresh',
+            'http://localhost:5000/auth/refresh',
             {},
             {
                 withCredentials: true,
@@ -19,7 +21,7 @@ const refreshAPI = async () => {
 
 const axiosInstance = (user = null, dispatch) => {
     const httpRequest = axios.create({
-        baseURL: 'https://lofi-cosmetic.onrender.com/',
+        baseURL: 'http://localhost:5000/',
         withCredentials: true,
     });
 

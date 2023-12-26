@@ -9,9 +9,9 @@ const cx = classNames.bind(styles);
 function SkeletonCartItem() {
     return (
         <>
-            {[1, 2, 3, 4, 5].map(() => {
+            {[1, 2, 3, 4, 5].map((value, index) => {
                 return (
-                    <div className={cx('row')}>
+                    <div className={cx('row')} key={index}>
                         <div className={cx('col-1')}>
                             <div className={cx('img')} style={{ border: 'none' }}>
                                 <Skeleton style={{ height: '100%' }} />
