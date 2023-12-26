@@ -70,7 +70,6 @@ function SearchPage() {
             </div>
 
             <div className="list__result">
-                {/* listBranchChecked.length === 0 && listPriceChecked.length === 0 && */}
                 {value !== 'all' ? (
                     total !== 0 && (
                         <div className={cx('number__result')}>
@@ -104,7 +103,7 @@ function SearchPage() {
                     </div>
 
                     {!isLoading ? (
-                        searchValue.length > 0 ? (
+                        searchValue?.length > 0 ? (
                             <div className={cx('list-search')}>
                                 <div className={cx('function')}>
                                     <div className={cx('arrangment')}> Sắp xếp theo:</div>

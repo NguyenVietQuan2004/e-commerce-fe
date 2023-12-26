@@ -3,8 +3,6 @@ import jwt_decode from 'jwt-decode';
 import { setToken } from '~/redux/actions';
 
 const refreshAPI = async () => {
-    // `https://lofi-cosmetic.onrender.com/auth/refresh`,
-
     try {
         const res = await axios.post(
             'https://lofi-cosmetic.onrender.com/auth/refresh',
