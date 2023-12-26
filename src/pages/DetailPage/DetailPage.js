@@ -39,7 +39,7 @@ function DetailPage() {
     useEffect(() => {
         const fetchAPI = async () => {
             const { products } = await searchService(`search?value=${slug}&field=slug&limit=1&page=1`);
-            if (products.length) {
+            if (products?.length) {
                 setProduct(...products);
                 const { MainPhotoURL, prices, usefor } = products[0];
                 const values = Object.values(prices[0]);
@@ -63,7 +63,6 @@ function DetailPage() {
         }
     };
     const handleOnClickAddCart = () => {
-        console.log(currentOption);
         if (!user) {
             navigate('/login');
         } else {

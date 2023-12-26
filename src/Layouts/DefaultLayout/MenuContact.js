@@ -26,7 +26,7 @@ function MenuContact({ children }) {
                     <PhoneIconContact />
                     Gọi ngay cho chúng tôi
                 </a>
-                <a href="https://zalo.me/0763948610" target="_blank" className={cx('contact-item')}>
+                <a href="https://zalo.me/0763948610" target="_blank" rel="noreferrer" className={cx('contact-item')}>
                     <ZaloIconContact /> Chat với chúng tôi qua zalo
                 </a>
                 <Link to="/contact" className={cx('contact-item')}>

@@ -54,7 +54,6 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            {/* footer middle */}
             <FooterMiddle />
             <div className={cx('footer-end')}>@ Bản quyền thuộc về Lofi Team | Cung cấp bởi Sapo</div>
         </div>

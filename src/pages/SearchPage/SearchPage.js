@@ -14,16 +14,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import QueryPriceItem from './QueryPriceItem';
 import QueryBranchItem from './QueryBranchItem';
 import { clearQuery } from '~/redux/actions';
+import { listBranch, listPrice } from '~/config/ListUtil';
+import SkeletonItem from '../../components/ListProduct/SkeletonItem';
 
 const cx = classNames.bind(styles);
-const listBranch = ['Chanel', 'VinFast', 'Gucci', 'Testla', 'SpaceX', 'DHCT', 'CTU', 'BKU', 'Leoneo mecsi'];
-const listPrice = [
-    { 'Dưới 100.000': '0-100000' },
-    { '100.000-200.000': '100000-200000' },
-    { '200.000-400.000': '200000-400000' },
-    { '400.000-600.000': '400000-600000' },
-    { 'Trên 600.000': '600000-5000000' },
-];
 
 function SearchPage() {
     const urlParams = new URL(window.location.href).searchParams;
@@ -32,12 +26,11 @@ function SearchPage() {
     const listPriceChecked = useSelector((state) => state.listPriceChecked);
     const dispatch = useDispatch();
     const [searchValue, setSearhValue] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [currentOption, setCurrentOption] = useState(0);
-
     const [currentPage, setCurrentPage] = useState(1);
     const [pageCount, setPageCount] = useState(0);
     const [total, setTotal] = useState(0);
-    // eslint-disable-next-line
     const location = useLocation();
 
     useEffect(() => {
@@ -52,8 +45,8 @@ function SearchPage() {
                 },
             );
             setSearhValue(products);
-            console.log(products, pageCount, total);
             setPageCount(pageCount);
+            setIsLoading(false);
             setTotal(total);
             if (products?.length <= 0) {
                 setCurrentPage(1);
@@ -65,7 +58,6 @@ function SearchPage() {
     useEffect(() => {
         dispatch(clearQuery());
     }, [value, dispatch]);
-    console.log(listBranchChecked, listPriceChecked);
 
     const handlePageClick = (data) => {
         setCurrentPage(() => data.selected + 1);
@@ -78,9 +70,16 @@ function SearchPage() {
             </div>
 
             <div className="list__result">
-                {listBranchChecked.length === 0 && listPriceChecked.length === 0 && (
+                {/* listBranchChecked.length === 0 && listPriceChecked.length === 0 && */}
+                {value !== 'all' ? (
+                    total !== 0 && (
+                        <div className={cx('number__result')}>
+                            Tìm thấy được <span>{total}</span> kết quả với từ khóa <span>"{value}"</span>
+                        </div>
+                    )
+                ) : (
                     <div className={cx('number__result')}>
-                        Tìm thấy được <span>{total}</span> kết quả với từ khóa <span>"{value}"</span>
+                        <span>Tất cả sản phẩm</span>
                     </div>
                 )}
 
@@ -104,70 +103,85 @@ function SearchPage() {
                         </div>
                     </div>
 
-                    {searchValue?.length > 0 ? (
-                        <div className={cx('list-search')}>
-                            <div className={cx('function')}>
-                                <div className={cx('arrangment')}> Sắp xếp theo:</div>
-                                <Tippy
-                                    interactive={true}
-                                    offset={[-90, -35]}
-                                    hideOnClick={true}
-                                    render={(attrs) => (
-                                        <div className={cx('option')}>
-                                            <PopperWrapper>
-                                                <div className={cx('option-item')} onClick={() => setCurrentOption(0)}>
-                                                    Giá
-                                                </div>
-                                                <div className={cx('option-item')} onClick={() => setCurrentOption(1)}>
-                                                    Giá thấp đến cao
-                                                </div>
-                                                <div className={cx('option-item')} onClick={() => setCurrentOption(-1)}>
-                                                    Giá cao đến thấp
-                                                </div>
-                                            </PopperWrapper>
+                    {!isLoading ? (
+                        searchValue.length > 0 ? (
+                            <div className={cx('list-search')}>
+                                <div className={cx('function')}>
+                                    <div className={cx('arrangment')}> Sắp xếp theo:</div>
+                                    <Tippy
+                                        interactive={true}
+                                        offset={[-90, -35]}
+                                        hideOnClick={true}
+                                        render={(attrs) => (
+                                            <div className={cx('option')}>
+                                                <PopperWrapper>
+                                                    <div
+                                                        className={cx('option-item')}
+                                                        onClick={() => setCurrentOption(0)}
+                                                    >
+                                                        Giá
+                                                    </div>
+                                                    <div
+                                                        className={cx('option-item')}
+                                                        onClick={() => setCurrentOption(1)}
+                                                    >
+                                                        Giá thấp đến cao
+                                                    </div>
+                                                    <div
+                                                        className={cx('option-item')}
+                                                        onClick={() => setCurrentOption(-1)}
+                                                    >
+                                                        Giá cao đến thấp
+                                                    </div>
+                                                </PopperWrapper>
+                                            </div>
+                                        )}
+                                    >
+                                        <div className={cx('selection')}>
+                                            {currentOption === 1
+                                                ? 'Giá từ thấp đến cao'
+                                                : currentOption === -1
+                                                ? 'Giá từ cao đến thấp'
+                                                : 'Giá'}
+                                            <DownIcon />
                                         </div>
-                                    )}
-                                >
-                                    <div className={cx('selection')}>
-                                        {currentOption === 1
-                                            ? 'Giá từ thấp đến cao'
-                                            : currentOption === -1
-                                            ? 'Giá từ cao đến thấp'
-                                            : 'Giá'}
-                                        <DownIcon />
-                                    </div>
-                                </Tippy>
-                            </div>
+                                    </Tippy>
+                                </div>
 
-                            {searchValue?.map((pro) => {
-                                return (
-                                    <ProductItem
-                                        key={pro._id}
-                                        MainPhotoURL={pro.MainPhotoURL}
-                                        Sub1PhotoURL={pro.Sub1PhotoURL}
-                                        prices={pro.prices}
-                                        salePercent={pro.salePercent}
-                                        sold={pro.sold}
-                                        name={pro.name}
-                                        store={pro.store}
-                                        branch={pro.branch}
-                                        slug={pro.slug}
-                                        _id={pro._id}
-                                        custom={true}
-                                    />
-                                );
-                            })}
-                        </div>
-                    ) : listBranchChecked.length > 0 || listPriceChecked.length > 0 ? (
-                        // hiện icon quay
-                        <div className={cx('none__product')}>
-                            <div className={cx('no-result')}> Không tìm thấy kết quả nào với danh mục này</div>
-                        </div>
+                                {searchValue.map((pro) => {
+                                    return (
+                                        <ProductItem
+                                            key={pro._id}
+                                            MainPhotoURL={pro.MainPhotoURL}
+                                            Sub1PhotoURL={pro.Sub1PhotoURL}
+                                            prices={pro.prices}
+                                            salePercent={pro.salePercent}
+                                            sold={pro.sold}
+                                            name={pro.name}
+                                            store={pro.store}
+                                            branch={pro.branch}
+                                            slug={pro.slug}
+                                            _id={pro._id}
+                                            custom={true}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        ) : listBranchChecked.length > 0 || listPriceChecked.length > 0 ? (
+                            // hiện icon quay
+                            <div className={cx('none__product')}>
+                                <div className={cx('no-result')}> Không tìm thấy kết quả nào với danh mục này</div>
+                            </div>
+                        ) : (
+                            <div className={cx('none__product')}>
+                                Không tìm thấy kết quả nào với từ khóa <span>"{value}"</span>
+                                <p>Vui lòng tìm kiếm với từ khóa khác</p>
+                                <Search custom="search2" />
+                            </div>
+                        )
                     ) : (
-                        <div className={cx('none__product')}>
-                            Không tìm thấy kết quả nào với từ khóa <span>"{value}"</span>
-                            <p>Vui lòng tìm kiếm với từ khóa khác</p>
-                            <Search custom="search2" />
+                        <div className={cx('list-search')}>
+                            <SkeletonItem />
                         </div>
                     )}
                 </div>

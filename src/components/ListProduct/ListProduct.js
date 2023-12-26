@@ -20,8 +20,6 @@ function ListProduct({ data, width = '100%', height }) {
                     767: { slidesPerView: 3 },
                     0: { slidesPerView: 2 },
                 }}
-                // onSlideChange={() => console.log('slide change')}
-                // onSwiper={(swiper) => console.log(swiper)}
                 pagination={{ clickable: true }}
             >
                 {data.map((pro, index) => {

@@ -31,7 +31,6 @@ function ProductItem({
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleAddCart = (_id) => {
-        // dispatch action thunk để lưu vào redux
         if (user) {
             const option = Object.keys(prices[0])[0];
             dispatch(updateCart(_id, 'add', undefined, option));

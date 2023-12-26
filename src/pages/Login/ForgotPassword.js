@@ -37,7 +37,6 @@ function ForgotPassword() {
     });
 
     const onSubmit = async (data) => {
-        console.log(getValues());
         const value = getValues();
         try {
             if (value?.email?.trim()) {

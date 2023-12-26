@@ -245,9 +245,12 @@
         width: 250px;
     }
 }
-@media (max-width: 320px) {
+@media (max-width: 340px) {
     .menu-contact {
         top: 40vh;
         right: 1vw;
+    }
+    .wrap-contact-icon {
+        top: 79vh;
     }
 }

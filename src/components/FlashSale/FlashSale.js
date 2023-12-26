@@ -4,14 +4,18 @@ import { useEffect, useState } from 'react';
 import { searchService } from '~/Service/searchService';
 import ListProduct from '../ListProduct';
 import CountTime from '../CountTime';
+import SkeletonItem from '../ListProduct/SkeletonItem';
 
 const cx = classNames.bind(styles);
 
 function FlashSale({ content, countTime = false, Subject, limit }) {
     const [productSale, setProductSale] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         const fetchAPI = async () => {
             const { products } = await searchService(`search?value=true&field=${Subject}&limit=${limit}&page=1`);
+            setIsLoading(false);
             if (products) {
                 setProductSale(products);
             }
@@ -29,7 +33,13 @@ function FlashSale({ content, countTime = false, Subject, limit }) {
                 )}
             </div>
             <div className="list__sale">
-                <ListProduct data={productSale} noWrap={true} />
+                {!isLoading ? (
+                    <ListProduct data={productSale} isLoading={isLoading} />
+                ) : (
+                    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <SkeletonItem count={[1, 2, 3, 4, 5]} custom />
+                    </div>
+                )}
             </div>
         </div>
     );

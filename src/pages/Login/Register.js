@@ -107,9 +107,9 @@ function Register() {
                     Lofi Cosmetic cam kết bảo mật và sẽ không bao giờ đăng hay chia sẻ thông tin mà chưa có được sự đồng
                     ý của bạn.
                 </span>
-                <div className={cx('line-break')}>
+                {/* <div className={cx('line-break')}>
                     <span>hoặc đăng nhập qua</span>
-                </div>
+                </div> */}
             </div>
         </div>
     );

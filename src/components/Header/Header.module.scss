@@ -14,6 +14,7 @@
 .menu__icon {
     display: none;
     margin-right: 10px;
+    cursor: pointer;
 }
 .img {
     display: inline-block;
@@ -52,6 +53,7 @@
 }
 .store {
     cursor: pointer;
+    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -140,6 +142,62 @@
         color: white;
     }
 }
+.menu-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 40px 0;
+    background-color: black;
+    width: 40%;
+    animation: showMenu 0.3s linear forwards;
+    display: flex;
+    flex-direction: column;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+    color: white;
+    h3 {
+        font-size: 2.6rem;
+        margin: 0;
+    }
+}
+.active {
+    color: var(--second-color) !important;
+}
+.navigation {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    a {
+        color: white;
+        font-size: 1.8rem;
+        padding: 10px 0;
+        font-weight: 600;
+    }
+}
+@keyframes showMenu {
+    from {
+        width: 0;
+    }
+    to {
+        width: 40%;
+    }
+}
+@keyframes showMenuMobile {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+}
 @media (max-width: 1200px) {
     .inner {
         justify-content: space-between;
@@ -182,5 +240,22 @@
     }
     .store {
         display: none;
+    }
+    .menu-modal {
+        width: 80%;
+        animation: showMenuMobile 0.3s linear;
+        h3 {
+            font-size: 2rem;
+        }
+        svg {
+            width: 26px;
+            height: 26px;
+        }
+    }
+    .navigation {
+        margin-left: 20px;
+        * {
+            font-size: 1.6rem !important;
+        }
     }
 }

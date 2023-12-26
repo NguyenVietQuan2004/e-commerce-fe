@@ -4,13 +4,11 @@ import classNames from 'classnames/bind';
 import styles from './DefaultLayout.module.scss';
 import { BellIcon } from '~/assets/icon';
 import UpToFirstIcon from './UpToFirstIcon';
-import { useState } from 'react';
 import MenuContact from './MenuContact';
 
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
-    const [isShowContact, setIsShowContact] = useState('none');
     return (
         <div className={cx('wrapper')}>
             <div className="header">

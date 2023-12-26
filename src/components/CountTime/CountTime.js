@@ -5,7 +5,6 @@ import { ClockIcon } from '~/assets/icon';
 
 const cx = classNames.bind(styles);
 function formatTimeUnit(unit) {
-    // Chuyển unit (số nguyên) thành chuỗi và thêm "0" vào đầu nếu cần
     return String(unit).padStart(2, '0');
 }
 

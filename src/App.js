@@ -9,8 +9,6 @@ function App() {
         <BrowserRouter>
             <div className="App">
                 <Routes>
-                    {/* private routes */}
-
                     {user &&
                         privateRoutes.map((route, index) => {
                             let Layout = DefaultLayout;

@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Section-9.module.scss';
 import { AuthorIcon, DayIcon } from '~/assets/icon';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 export const listNews = [
@@ -60,7 +61,8 @@ function SectionNine() {
                 <h2>Xu hướng làm đẹp</h2>
                 <div className={cx('list-news')}>
                     {listNews.map((value, index) => (
-                        <div
+                        <Link
+                            to={`/news/${index + 1}`}
                             className={cx('news-item', {
                                 none: index >= 4,
                             })}
@@ -81,7 +83,7 @@ function SectionNine() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

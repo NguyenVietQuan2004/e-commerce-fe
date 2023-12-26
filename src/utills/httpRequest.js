@@ -1,10 +1,13 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { setToken } from '~/redux/actions';
 
 const refreshAPI = async () => {
+    // `https://lofi-cosmetic.onrender.com/auth/refresh`,
+
     try {
         const res = await axios.post(
-            `https://lofi-cosmetic.onrender.com/auth/refresh`,
+            'https://lofi-cosmetic.onrender.com/auth/refresh',
             {},
             {
                 withCredentials: true,
@@ -16,7 +19,7 @@ const refreshAPI = async () => {
     }
 };
 
-const axiosInstance = (user = null, dispatch, stateSuccess) => {
+const axiosInstance = (user = null, dispatch) => {
     const httpRequest = axios.create({
         baseURL: 'https://lofi-cosmetic.onrender.com/',
         withCredentials: true,
@@ -30,7 +33,7 @@ const axiosInstance = (user = null, dispatch, stateSuccess) => {
                 if (tokenDecode && tokenDecode.exp < date.getTime() / 1000) {
                     const res = await refreshAPI();
                     if (res) {
-                        dispatch(stateSuccess({ ...user, accessToken: res.accessToken }));
+                        dispatch(setToken(res.accessToken));
                         config.headers['token'] = 'Bearer ' + res.accessToken;
                     }
                 }

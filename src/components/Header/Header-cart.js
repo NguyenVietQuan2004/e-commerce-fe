@@ -4,12 +4,10 @@ import styles from './Header.module.scss';
 import { CartIcon } from '~/assets/icon';
 import Tippy from '@tippyjs/react/headless';
 import PopperWrapper from '../PopperWrapper/PopperWrapper';
-import PricetoString from '~/utills/PriceToString';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCartThunk } from '~/redux/actions';
 import { Link } from 'react-router-dom';
-import { getCost } from '~/utills/getCost';
 import HeaderCartItem from './Header-cart-item';
 
 const cx = classNames.bind(styles);

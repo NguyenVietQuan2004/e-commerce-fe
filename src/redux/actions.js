@@ -107,12 +107,6 @@ export const updateTotalCart = (_id, cost, count, query, type = 'updateTotalCart
         payload,
     };
 };
-export const changeCheckedAll = (payload, type = 'changeCheckedAll') => {
-    return {
-        type,
-        payload,
-    };
-};
 export const addToBranchChecked = (payload, type = 'addToListBranchChecked') => {
     return {
         type,
@@ -138,6 +132,12 @@ export const deleteToPriceChecked = (payload, type = 'deleteToListPriceChecked')
     };
 };
 export const clearQuery = (payload, type = 'clearQuery') => {
+    return {
+        type,
+        payload,
+    };
+};
+export const setToken = (payload, type = 'setToken') => {
     return {
         type,
         payload,
@@ -171,7 +171,7 @@ export const updateCart = (IDProduct, query, number, option = 'NaN') => {
     return async function (dispatch, getState) {
         const currentState = getState();
         const pro = currentState.login.currentUser.cart.find((idPro) => Object.keys(idPro)[0] === IDProduct);
-        const httpRequest = axiosInstance(currentState.login.currentUser, dispatch, loginSuccess);
+        const httpRequest = axiosInstance(currentState.login.currentUser, dispatch);
         let condition;
         if (pro) {
             condition = {
@@ -180,7 +180,6 @@ export const updateCart = (IDProduct, query, number, option = 'NaN') => {
                 number: number || pro[IDProduct] + 1,
                 option: option,
             };
-            console.log('da co nhung update');
         } else {
             condition = {
                 query,

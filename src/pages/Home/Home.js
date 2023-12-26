@@ -12,7 +12,7 @@ import SectionNine from '~/components/Section-9';
 const cx = classNames.bind(styles);
 function Home() {
     return (
-        <div style={{ backgroundColor: ' var(--primary-color)' }}>
+        <div>
             <div className={cx('section-1')}>
                 <Slide />
             </div>

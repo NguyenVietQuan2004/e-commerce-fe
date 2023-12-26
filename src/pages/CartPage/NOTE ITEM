@@ -7,9 +7,8 @@ import { addTotalCart, deleteTotalCart, updateCart, updateTotalCart } from '~/re
 import { useNavigate } from 'react-router-dom';
 import useDebounced from '~/hooks/useDebounced';
 import { getCost } from '~/utills/getCost';
-import { DownIcon, UpIcon } from '~/assets/icon';
+import { BinIcon } from '~/assets/icon';
 import Tippy from '@tippyjs/react';
-import Skeleton from 'react-loading-skeleton';
 
 const cx = classNames.bind(styles);
 function CartItem({ name, photoURL, prices, salePercent, store, _id }) {
@@ -121,35 +120,41 @@ function CartItem({ name, photoURL, prices, salePercent, store, _id }) {
                 <div className={cx('img')}>
                     <img alt="" src={photoURL} />
                 </div>
-                <div>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        flexDirection: 'column',
+                    }}
+                >
                     <div className={cx('name')}>{name}</div>
-                    {product.option !== 'NaN' && <div>Lựa chọn: {product.option}</div>}
-
                     <Tippy content="xóa">
                         <button className={cx('delete')} onClick={handleDeleteCart}>
-                            X Xóa
+                            <BinIcon />
+                            Xóa
                         </button>
                     </Tippy>
                 </div>
             </div>
             <div className={cx('col-2')}>
                 <div>{PricetoString(cost, 'not:d')} </div>
+                <div className={cx('number', 'number-temp')}>
+                    <button onClick={handleOnclickMinus}>-</button>
+                    <span>{count}</span>
+                    <button onClick={HandleOnclickPlus}>+</button>
+                </div>
             </div>
 
             <div className={cx('col-3')}>
                 <div className={cx('number')}>
+                    <button onClick={handleOnclickMinus}>-</button>
                     <span>{count}</span>
-                    <div className={cx('icons')}>
-                        <button onClick={HandleOnclickPlus}>
-                            <UpIcon />
-                        </button>
-                        <button onClick={handleOnclickMinus}>
-                            <DownIcon />
-                        </button>
-                    </div>
+                    <button onClick={HandleOnclickPlus}>+</button>
                 </div>
             </div>
-            <div className={cx('price', 'col-4')}>{PricetoString(cost * count)}</div>
+            <div className={cx('col-4')}>{product?.option === 'NaN' ? '' : product?.option}</div>
+            <div className={cx('price', 'col-5')}>{PricetoString(cost * count)}</div>
         </div>
     );
 }

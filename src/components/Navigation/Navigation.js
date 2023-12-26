@@ -12,10 +12,10 @@ function Navigation() {
                 <NavLink to="/instruction" className={(nav) => cx({ active: nav.isActive })}>
                     Giới thiệu
                 </NavLink>
-                <NavLink to="/" className={(nav) => cx({ active: nav.isActive })}>
+                <NavLink to="/search?value=all" className={(nav) => cx({ active: nav.isActive })}>
                     Sản phẩm
                 </NavLink>
-                <NavLink to="/news" className={(nav) => cx({ active: nav.isActive })}>
+                <NavLink to="/news/0" className={(nav) => cx({ active: nav.isActive })}>
                     Tin tức
                 </NavLink>
                 <NavLink to="/contact" className={(nav) => cx({ active: nav.isActive })}>

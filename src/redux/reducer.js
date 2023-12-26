@@ -18,7 +18,6 @@ const initialState = {
         IDListCartBuy: [],
         total: 0,
     },
-    isCheckedAll: false,
     listBranchChecked: [],
     listPriceChecked: [],
 };
@@ -52,7 +51,6 @@ const rootReducer = (state = initialState, action) => {
                     error: true,
                 },
             };
-        // logout
         case 'logoutStart':
             return {
                 ...state,
@@ -86,8 +84,17 @@ const rootReducer = (state = initialState, action) => {
                     error: true,
                 },
             };
-
-        // register
+        case 'setToken':
+            return {
+                ...state,
+                login: {
+                    ...state.login,
+                    currentUser: {
+                        ...state.login.currentUser,
+                        accessToken: action.payload,
+                    },
+                },
+            };
         case 'registerStart':
             return {
                 ...state,
@@ -140,7 +147,6 @@ const rootReducer = (state = initialState, action) => {
                     error: true,
                 },
             };
-        // {id: sfjhsdj, price: 83712, count: 3, query: plus}
         case 'addTotalCart':
             if (!action.payload.price) {
                 return state;
@@ -149,7 +155,6 @@ const rootReducer = (state = initialState, action) => {
                 const id = Object.values(cart)[0];
                 return id !== action.payload._id;
             });
-            console.log('sau khi them', [...newLists, action.payload]);
 
             return {
                 ...state,
@@ -166,7 +171,6 @@ const rootReducer = (state = initialState, action) => {
                 const id = Object.values(cart)[0];
                 return id !== action.payload._id;
             });
-            console.log('sau khi xoa', newListCartBuy);
 
             return {
                 ...state,
@@ -176,8 +180,6 @@ const rootReducer = (state = initialState, action) => {
                 },
             };
         case 'updateTotalCart':
-            // { id: zzzz , price: 500k, query: add}
-
             let pro = state.totalCart.IDListCartBuy.find((cart) => {
                 const id = Object.values(cart)[0];
                 return id === action.payload._id;
@@ -188,7 +190,6 @@ const rootReducer = (state = initialState, action) => {
                 return id !== action.payload._id;
             });
             const { query, ...order } = action.payload;
-            console.log('sau khi update', [...newList, order]);
             if (action.payload.query === 'plus') {
                 return {
                     ...state,
@@ -206,13 +207,6 @@ const rootReducer = (state = initialState, action) => {
                     },
                 };
             }
-        // case 'changeCheckedAll':
-        //     const list = state.listBranchChecked.filter((item) => item !== action.payload);
-        //     return {
-        //         ...state,
-        //         isCheckedAll: [...list, action.payload],
-        //     };
-
         case 'addToListBranchChecked':
             const list = state.listBranchChecked.filter((item) => item !== action.payload);
 
@@ -228,7 +222,6 @@ const rootReducer = (state = initialState, action) => {
             };
         case 'addToListPriceChecked':
             const lists = state.listPriceChecked.filter((item) => item !== action.payload);
-            console.log(action.payload);
             return {
                 ...state,
                 listPriceChecked: [...lists, action.payload],
@@ -241,7 +234,6 @@ const rootReducer = (state = initialState, action) => {
                 listPriceChecked: newListBranchs,
             };
         case 'clearQuery':
-            console.log('da clear');
             return {
                 ...state,
                 listPriceChecked: [],

@@ -1,5 +1,6 @@
 .wrapper {
     position: relative;
+    user-select: none;
 }
 .account {
     border: 1px solid var(--primary-color);
