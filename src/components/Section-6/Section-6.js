@@ -28,8 +28,6 @@ function SectionSix() {
                         1024: { slidesPerView: 5 },
                         1300: { slidesPerView: 6 },
                     }}
-                    // onSlideChange={handleSlideChange}
-                    // onSwiper={(swiper) => console.log(swiper)}
                     loop={true}
                 >
                     {listBranch.map((value, index) => {

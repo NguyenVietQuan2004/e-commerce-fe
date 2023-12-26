@@ -21,9 +21,7 @@ function Contact() {
         resolver: yupResolver(schema), // Sử dụng yupResolver để sử dụng schema validation
     });
 
-    const onsubmit = (data) => {
-        console.log(data);
-    };
+    const onsubmit = (data) => {};
     return (
         <div className={cx('wrapper')}>
             <Path pathList={['Liên hệ']} />

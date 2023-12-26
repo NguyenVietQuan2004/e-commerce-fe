@@ -23,7 +23,6 @@ function QueryPriceItem({ name, price }) {
         setChecked(!checked);
     };
     useEffect(() => {
-        console.log(checked, price);
         if (checked) {
             dispatch(addToPriceChecked(price));
         } else {

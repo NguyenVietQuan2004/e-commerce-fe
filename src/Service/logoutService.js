@@ -15,10 +15,8 @@ export const logoutService = async (path, user, dispatch, navigate) => {
             },
         );
         dispatch(logoutSuccess());
-        console.log('logout thanh cong');
         navigate('/login');
     } catch (err) {
         dispatch(logoutFail());
-        console.log('logout that bat');
     }
 };

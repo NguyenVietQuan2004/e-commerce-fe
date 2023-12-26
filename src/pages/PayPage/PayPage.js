@@ -82,7 +82,7 @@ function PayPage() {
     // submit
     const onSubmit = async (data) => {
         try {
-            const res = await httpRequest.post('/auth/notify', {
+            await httpRequest.post('/auth/notify', {
                 params: {
                     email: data.email,
                     locate: data.locate,
@@ -92,7 +92,6 @@ function PayPage() {
                     },
                 },
             });
-            console.log('thanh cong', res);
         } catch (error) {
             console.log(error);
         }
