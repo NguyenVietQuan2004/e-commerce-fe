@@ -123,7 +123,7 @@ function CartItem({ name, photoURL, prices, salePercent, store, _id }) {
                 </div>
                 <div>
                     <div className={cx('name')}>{name}</div>
-                    {product?.option !== 'NaN' && <div>Lựa chọn: {product?.option}</div>}
+                    {product?.option !== 'NaN' && product?.option && <div>Lựa chọn: {product?.option}</div>}
 
                     <Tippy content="xóa">
                         <button className={cx('delete')} onClick={handleDeleteCart}>

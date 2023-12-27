@@ -12,7 +12,7 @@ function ItemCustomer({ text, name, job, photoURL }) {
                 <img alt="" src={photoURL} />
             </div>
             <div className={cx('name')}>{name}</div>
-            <div style={{ fontSize: '1.5rem' }}>{job}</div>
+            <div style={{ fontSize: '1.4rem' }}>{job}</div>
         </div>
     );
 }

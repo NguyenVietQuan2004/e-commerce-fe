@@ -9,7 +9,7 @@ import axiosInstance from '~/utills/httpRequest';
 // import ReactPaginate from 'react-paginate';
 import { loginSuccess } from '~/redux/actions';
 import PricetoString from '~/utills/PriceToString';
-import { LocateIcon } from '~/assets/icon';
+import { CartIcon, LocateIcon } from '~/assets/icon';
 import SkeletonCartItem from './SkeletonCartItem';
 
 const cx = classNames.bind(styles);
@@ -19,14 +19,9 @@ function CartPage() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.login.currentUser);
     const totalCart = useSelector((state) => state.totalCart);
-    const isCheckAll = useSelector((state) => state.isCheckedAll);
     const httpRequest = axiosInstance(user, dispatch, loginSuccess);
     const [listCart, setListCart] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [pageCount, setPageCount] = useState(0);
-    const [isCheckBoxAll, setIsCheckBoxAll] = useState(false);
 
     useEffect(() => {
         if (!user) {
@@ -48,24 +43,15 @@ function CartPage() {
                         },
                     },
                 );
-                // const { products, pageCount } = data.data;
                 const { products } = data.data;
                 setIsLoading(false);
                 setListCart(products);
-                // setPageCount(pageCount);
             };
             fetchAPI();
         }
         // eslint-disable-next-line
     }, [user]);
-    // [currentPage, user]
-    // const handlePageClick = (data) => {
-    //     setCurrentPage(() => data.selected + 1);
-    // };
-    const handleOnchangeCheckedAll = () => {
-        setIsCheckBoxAll(!isCheckBoxAll);
-        // dispatch(changeCheckedAll(!isCheckBoxAll));
-    };
+
     return (
         <div className={cx('wrapper')}>
             <Path pathList={['Giỏ hàng']} />
@@ -73,37 +59,38 @@ function CartPage() {
             <div className={cx('content')}>
                 <div className={cx('container')}>
                     {!isLoading ? (
-                        <div className={cx('table')}>
-                            <div className={cx('row', 'header')}>
-                                <div className={cx('col-1')}>
-                                    <div>
-                                        <input
-                                            type="checkbox"
-                                            style={{ scale: '1.3', marginRight: '20px' }}
-                                            checked={isCheckAll}
-                                            onChange={handleOnchangeCheckedAll}
-                                        />
-                                        Chọn tất cả trang này
+                        listCart?.length > 0 ? (
+                            <div className={cx('table')}>
+                                <div className={cx('row', 'header')}>
+                                    <div className={cx('col-1')}>
+                                        <div>
+                                            <input type="checkbox" style={{ scale: '1.3', marginRight: '20px' }} />
+                                            Chọn tất cả trang này
+                                        </div>
                                     </div>
+                                    <div className={cx('col-2')}>Giá tiền</div>
+                                    <div className={cx('col-3')}>Số lượng</div>
+                                    <div className={cx('col-4')}>Thành tiền</div>
                                 </div>
-                                <div className={cx('col-2')}>Giá tiền</div>
-                                <div className={cx('col-3')}>Số lượng</div>
-                                <div className={cx('col-4')}>Thành tiền</div>
+                                <div style={{ width: '100%' }}>
+                                    {listCart.map((value, index) => (
+                                        <CartItem
+                                            key={value._id}
+                                            name={value.name}
+                                            photoURL={value.MainPhotoURL}
+                                            store={value.store}
+                                            salePercent={value.salePercent}
+                                            prices={value.prices}
+                                            _id={value._id}
+                                        />
+                                    ))}
+                                </div>
                             </div>
-                            <div style={{ width: '100%' }}>
-                                {listCart.map((value, index) => (
-                                    <CartItem
-                                        key={value._id}
-                                        name={value.name}
-                                        photoURL={value.MainPhotoURL}
-                                        store={value.store}
-                                        salePercent={value.salePercent}
-                                        prices={value.prices}
-                                        _id={value._id}
-                                    />
-                                ))}
+                        ) : (
+                            <div className={cx('empty-cart')}>
+                                <CartIcon /> Giỏ hàng trống
                             </div>
-                        </div>
+                        )
                     ) : (
                         <div className={cx('table')}>
                             <div style={{ width: '100%' }}>
@@ -112,60 +99,51 @@ function CartPage() {
                         </div>
                     )}
 
-                    <div className={cx('bill')}>
-                        <div className={cx('header')}>
-                            <div className={cx('locate')}>Địa điểm</div>
-                            <div
-                                style={{
-                                    fontSize: '1.4rem',
-                                    paddingTop: '20px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <LocateIcon /> Add Shipping Address
+                    {listCart?.length > 0 && (
+                        <div className={cx('bill')}>
+                            <div className={cx('header')}>
+                                <div className={cx('locate')}>Địa điểm</div>
+                                <div
+                                    style={{
+                                        fontSize: '1.4rem',
+                                        paddingTop: '20px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <LocateIcon /> Add Shipping Address
+                                </div>
                             </div>
-                        </div>
-                        <div className={cx('middle')}>
-                            <div className={cx('subject')}>Thông tin đơn hàng</div>
+                            <div className={cx('middle')}>
+                                <div className={cx('subject')}>Thông tin đơn hàng</div>
 
-                            <div className={cx('detail')}>
-                                <span>Tạm tính ({totalCart.IDListCartBuy.length} sản phẩm)</span>
-                                <div>{PricetoString(totalCart.total)}</div>
+                                <div className={cx('detail')}>
+                                    <span>Tạm tính ({totalCart.IDListCartBuy.length} sản phẩm)</span>
+                                    <div>{PricetoString(totalCart.total)}</div>
+                                </div>
+                                <div className={cx('detail')}>
+                                    <span>Phí vận chuyển</span> <div>{PricetoString(100000)}</div>
+                                </div>
+                                <div className={cx('sale-code')}>
+                                    <input placeholder="Nhập mã giảm giá (mã chỉ áp dụng 1 lần)" />
+                                    <button>Áp dụng</button>
+                                </div>
                             </div>
-                            <div className={cx('detail')}>
-                                <span>Phí vận chuyển</span> <div>{PricetoString(100000)}</div>
-                            </div>
-                            <div className={cx('sale-code')}>
-                                <input placeholder="Nhập mã giảm giá (mã chỉ áp dụng 1 lần)" />
-                                <button>Áp dụng</button>
+                            <div className={cx('footer')}>
+                                <div className={cx('total')}>
+                                    <span>Tổng cộng</span>
+                                    <div className={cx('price')}>{PricetoString(totalCart.total + 100000)}</div>
+                                </div>
+                                <div className={cx('sub')}>
+                                    Đã bao gồm <span> VAT</span>(nếu có)
+                                </div>
+                                <Link to={totalCart.IDListCartBuy.length > 0 ? '/pay' : '#'} className={cx('submit')}>
+                                    Tiến hành đặt hàng ({totalCart.IDListCartBuy.length})
+                                </Link>
                             </div>
                         </div>
-                        <div className={cx('footer')}>
-                            <div className={cx('total')}>
-                                <span>Tổng cộng</span>
-                                <div className={cx('price')}>{PricetoString(totalCart.total + 100000)}</div>
-                            </div>
-                            <div className={cx('sub')}>
-                                Đã bao gồm <span> VAT</span>(nếu có)
-                            </div>
-                            <Link to={totalCart.IDListCartBuy.length > 0 ? '/pay' : '#'} className={cx('submit')}>
-                                Tiến hành đặt hàng ({totalCart.IDListCartBuy.length})
-                            </Link>
-                        </div>
-                    </div>
+                    )}
                 </div>
-                {/* <ReactPaginate
-                    className={cx('paginate')}
-                    breakLabel="..."
-                    nextLabel=">"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={2}
-                    pageCount={pageCount}
-                    previousLabel="<"
-                    renderOnZeroPageCount={null}
-                    activeClassName={cx('active')}
-                /> */}
             </div>
         </div>
     );

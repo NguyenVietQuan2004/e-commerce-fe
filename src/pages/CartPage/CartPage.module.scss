@@ -234,6 +234,20 @@
         background-color: #fb8f46;
     }
 }
+.empty-cart {
+    margin: 40px auto;
+    font-size: 2.4rem;
+    display: flex;
+    align-items: center;
+    svg {
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+    }
+    path {
+        fill: black;
+    }
+}
 
 @media (max-width: 1400px) {
     .content {

@@ -46,7 +46,16 @@ function HeaderCart() {
                                     );
                                 })
                             ) : (
-                                <div>Giỏ hàng trống</div>
+                                <div className={cx('empty-cart')}>
+                                    <div className={cx('img')}>
+                                        <img
+                                            alt=""
+                                            src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/9bdd8040b334d31946f49e36beaf32db.png"
+                                        />
+                                    </div>
+
+                                    <div>Chưa có sản phẩm</div>
+                                </div>
                             )}
                         </div>
                         {listCart?.products?.length > 0 && (

@@ -40,6 +40,7 @@ function Register() {
                 userName: data.userName,
                 password: data.password,
                 photoURL: data.photoURL,
+                email: data.email,
                 cart: [],
                 loved: [],
                 role: 1,
@@ -82,7 +83,7 @@ function Register() {
                         </div>
                         <div className={cx('form-group')}>
                             <label htmlFor="email">Email*</label>
-                            <input {...register('email')} id="email" placeholder="Nhập email" />
+                            <input {...register('email')} id="email" placeholder="Nhập email" type="email" />
                             <p>{errors?.email?.message}</p>
                         </div>
                         <div className={cx('form-group')}>

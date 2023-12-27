@@ -5,7 +5,7 @@
     position: relative;
 }
 .model {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -35,6 +35,7 @@
     .wrap-btn {
         margin: 16px;
         align-self: flex-end;
+        display: flex;
     }
     button,
     a {
@@ -341,8 +342,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     padding: 26px 0;
 }
-.total {
-}
+
 .total-price {
     display: flex;
     justify-content: space-between;

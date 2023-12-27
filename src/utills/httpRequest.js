@@ -7,7 +7,7 @@ const refreshAPI = async () => {
 
     try {
         const res = await axios.post(
-            'https://lofi-cosmetic.onrender.com/auth/refresh',
+            'http://localhost:5000/auth/refresh',
             {},
             {
                 withCredentials: true,
@@ -21,7 +21,7 @@ const refreshAPI = async () => {
 
 const axiosInstance = (user = null, dispatch) => {
     const httpRequest = axios.create({
-        baseURL: 'https://lofi-cosmetic.onrender.com/',
+        baseURL: 'http://localhost:5000/',
         withCredentials: true,
     });
 
