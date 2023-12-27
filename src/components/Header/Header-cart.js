@@ -79,7 +79,7 @@ function HeaderCart() {
                         <div>0</div>
                     )}
                 </span>
-                <p>cart</p>
+                <p>Cart</p>
             </div>
         </Tippy>
     );

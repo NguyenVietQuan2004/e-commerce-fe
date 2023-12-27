@@ -64,8 +64,8 @@ function CartPage() {
                                 <div className={cx('row', 'header')}>
                                     <div className={cx('col-1')}>
                                         <div>
-                                            <input type="checkbox" style={{ scale: '1.3', marginRight: '20px' }} />
-                                            Chọn tất cả trang này
+                                            {/* <input type="checkbox" style={{ scale: '1.3', marginRight: '20px' }} /> */}
+                                            Sản phẩm
                                         </div>
                                     </div>
                                     <div className={cx('col-2')}>Giá tiền</div>

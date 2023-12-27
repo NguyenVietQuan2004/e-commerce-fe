@@ -25,7 +25,12 @@ function Home() {
             <div className={cx('section-4')}>
                 <FlashSale countTime={true} content="Trending Today" Subject="salePercent" limit={6} />
             </div>
-
+            <div className={cx('event')}>
+                <div className={cx('img')}>
+                    <img alt="" src="https://i.pinimg.com/originals/a5/b0/46/a5b046a4af94ec6415b9076cbbc80843.jpg" />
+                </div>
+                <div className={cx('event-text')}>SỰ KIỆN GIÁNG SINH CỰC KỲ VUI NHỘN</div>
+            </div>
             <div className={cx('section-5')}>
                 <div className={cx('img')}>
                     <img
