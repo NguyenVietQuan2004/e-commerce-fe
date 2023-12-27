@@ -17,8 +17,6 @@
 
 .table {
     width: 76%;
-    display: flex;
-    flex-wrap: wrap;
     padding: 20px;
     background-color: white;
 }
@@ -250,17 +248,15 @@
 }
 
 @media (max-width: 1400px) {
-    .content {
-        padding: 0;
-    }
-}
-@media (max-width: 1400px) {
     .table {
         width: 100%;
     }
     .bill {
         width: 50%;
         margin-left: auto;
+    }
+    .content {
+        padding: 0;
     }
 }
 
