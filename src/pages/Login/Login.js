@@ -34,7 +34,7 @@ function Login() {
         window.scroll({
             top: 0,
         });
-        reset();
+        console.log(errors.userName);
     }, []);
 
     // useEffect(() => {
