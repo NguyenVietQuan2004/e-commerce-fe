@@ -83,6 +83,12 @@ const rootReducer = (state = initialState, action) => {
                     isFetching: false,
                     error: false,
                 },
+                totalCart: {
+                    IDListCartBuy: [],
+                    total: 0,
+                },
+                listBranchChecked: [],
+                listPriceChecked: [],
             };
         case 'logoutFail':
             return {
