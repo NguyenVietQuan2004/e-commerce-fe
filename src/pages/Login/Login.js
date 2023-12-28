@@ -9,6 +9,7 @@ import { loginService } from '~/Service/loginService';
 import { useDispatch, useSelector } from 'react-redux';
 import Path from '~/components/Path';
 import { useEffect } from 'react';
+import { setCancelErrorLogin } from '~/redux/actions';
 
 const cx = classNames.bind(styles);
 
@@ -34,7 +35,7 @@ function Login() {
         window.scroll({
             top: 0,
         });
-        console.log(errors.userName);
+        dispatch(setCancelErrorLogin());
     }, []);
 
     // useEffect(() => {

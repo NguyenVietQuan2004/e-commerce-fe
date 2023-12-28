@@ -30,6 +30,13 @@ export const logoutSuccess = (payload, type = 'logoutSuccess') => {
         payload,
     };
 };
+export const setCancelErrorLogin = (payload, type = 'setCancelErrorLogin') => {
+    return {
+        type,
+        payload,
+    };
+};
+
 export const logoutFail = (payload, type = 'logoutFail') => {
     return {
         type,

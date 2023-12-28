@@ -51,6 +51,15 @@ const rootReducer = (state = initialState, action) => {
                     error: true,
                 },
             };
+
+        case 'setCancelErrorLogin':
+            return {
+                ...state,
+                login: {
+                    ...state.login,
+                    error: false,
+                },
+            };
         case 'logoutStart':
             return {
                 ...state,
