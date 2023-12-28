@@ -26,6 +26,7 @@ function Login() {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm({
         resolver: yupResolver(schema), // Sử dụng yupResolver để sử dụng schema validation
     });
@@ -33,6 +34,7 @@ function Login() {
         window.scroll({
             top: 0,
         });
+        reset();
     }, []);
 
     // useEffect(() => {

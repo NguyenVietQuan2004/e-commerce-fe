@@ -39,7 +39,7 @@ function Slide() {
             >
                 {listSlide.map((value, index) => {
                     return (
-                        <SwiperSlide key={index}>
+                        <SwiperSlide key={index} style={{ width: '100vw' }}>
                             <div className={cx('img')}>
                                 <img alt="" src={value} />
                             </div>
