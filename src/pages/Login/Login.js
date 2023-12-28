@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loginService } from '~/Service/loginService';
 import { useDispatch, useSelector } from 'react-redux';
 import Path from '~/components/Path';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -28,6 +29,11 @@ function Login() {
     } = useForm({
         resolver: yupResolver(schema), // Sử dụng yupResolver để sử dụng schema validation
     });
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
 
     // useEffect(() => {
     //     if (user) {

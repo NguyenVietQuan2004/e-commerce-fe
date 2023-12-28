@@ -1,8 +1,14 @@
 import Path from '~/components/Path';
 import styles from './Instruction.module.scss';
 import classNames from 'classnames/bind';
+import { useEffect } from 'react';
 const cx = classNames.bind(styles);
 function Instruction() {
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
     return (
         <div className={cx('wrapper')}>
             <Path pathList={['Giới thiệu']} />

@@ -111,6 +111,11 @@ function PayPage() {
             });
         }
     };
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cx('wrapper')}>

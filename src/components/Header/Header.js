@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import { ClockIcon, CloseIcon, HeartIcon, MenuIcon } from '~/assets/icon';
+import { CloseIcon, HeartIcon, MenuIcon } from '~/assets/icon';
 import ButtonAccount from '../ButtonAccount';
 import { useSelector } from 'react-redux';
 import Navigation from '../Navigation';

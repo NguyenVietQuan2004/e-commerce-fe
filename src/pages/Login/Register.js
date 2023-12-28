@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerService } from '~/Service/registerService';
 import Path from '~/components/Path';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -49,6 +50,11 @@ function Register() {
             navigate,
         );
     };
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
 
     return (
         <div className={cx('wrapper')}>

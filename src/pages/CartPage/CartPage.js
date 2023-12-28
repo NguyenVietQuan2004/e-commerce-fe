@@ -22,6 +22,11 @@ function CartPage() {
     const httpRequest = axiosInstance(user, dispatch, loginSuccess);
     const [listCart, setListCart] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
 
     useEffect(() => {
         if (!user) {

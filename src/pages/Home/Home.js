@@ -8,9 +8,16 @@ import classNames from 'classnames/bind';
 import SectionSix from '~/components/Section-6';
 import SectionEight from '~/components/Section-8';
 import SectionNine from '~/components/Section-9';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
+
 function Home() {
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
     return (
         <div>
             <div className={cx('section-1')}>

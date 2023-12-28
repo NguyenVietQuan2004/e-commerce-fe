@@ -9,7 +9,6 @@ import useDebounced from '~/hooks/useDebounced';
 import { getCost } from '~/utills/getCost';
 import { DownIcon, UpIcon } from '~/assets/icon';
 import Tippy from '@tippyjs/react';
-import Skeleton from 'react-loading-skeleton';
 
 const cx = classNames.bind(styles);
 function CartItem({ name, photoURL, prices, salePercent, store, _id }) {

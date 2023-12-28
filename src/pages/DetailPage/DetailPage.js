@@ -88,6 +88,11 @@ function DetailPage() {
             }
         });
     };
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
 
     return (
         <div className={cx('wrapper')}>

@@ -10,11 +10,17 @@ import NewsThree from './News-3';
 import NewsFive from './News-5';
 import NewsSix from './News-6';
 import NewsZero from './News-0';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
 function News() {
     const { slug } = useParams();
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
     return (
         <div className={cx('wrapper')}>
             <Path pathList={['Tin tức']} />
@@ -35,10 +41,8 @@ function News() {
                                 return <NewsFive key={index} />;
                             case '6':
                                 return <NewsSix key={index} />;
-
                             default:
                                 return <NewsZero key={index} />;
-                                break;
                         }
                     })}
                 </div>

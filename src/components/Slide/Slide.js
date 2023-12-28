@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Slide.module.scss';
 import Search from './Search/Search';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { A11y, Autoplay } from 'swiper/modules';
 
 const cx = classNames.bind(styles);
 const listSlide = [

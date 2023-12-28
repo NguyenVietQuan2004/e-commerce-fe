@@ -62,6 +62,11 @@ function SearchPage() {
     const handlePageClick = (data) => {
         setCurrentPage(() => data.selected + 1);
     };
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
 
     return (
         <div className={cx('wrapper')}>

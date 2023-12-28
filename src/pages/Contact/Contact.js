@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,11 @@ function Contact() {
     } = useForm({
         resolver: yupResolver(schema), // Sử dụng yupResolver để sử dụng schema validation
     });
-
+    useEffect(() => {
+        window.scroll({
+            top: 0,
+        });
+    }, []);
     const onsubmit = (data) => {};
     return (
         <div className={cx('wrapper')}>
